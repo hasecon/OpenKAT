@@ -1,6 +1,6 @@
 """
 Unit tests voor de LockBit CVE Detector
-Ontwikkeld door Hasecon
+Ontwikkeld door Edward Hasekamp
 """
 
 import unittest

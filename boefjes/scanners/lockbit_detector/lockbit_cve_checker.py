@@ -1,12 +1,12 @@
 """
 LockBit CVE Detector for OpenKAT
-Developed by Hasecon
+Developed by Edward Hasekamp
 
 This module checks if CVEs are known to be exploited by LockBit ransomware.
 """
 
-__author__ = "Hasecon"
-__copyright__ = "Copyright 2025, Hasecon"
+__author__ = "Edward Hasekamp"
+__copyright__ = "Copyright 2025, Edward Hasekamp"
 __license__ = "EUPL-1.2"
 
 

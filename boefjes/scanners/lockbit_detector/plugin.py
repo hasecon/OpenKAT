@@ -1,6 +1,6 @@
 """
 LockBit CVE Detector Plugin for OpenKAT
-Developed by Hasecon
+Developed by Edward Hasekamp
 
 This plugin integrates the LockBit CVE checker with OpenKAT's vulnerability scanning.
 """

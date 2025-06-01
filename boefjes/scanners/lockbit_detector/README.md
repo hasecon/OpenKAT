@@ -1,6 +1,6 @@
 # LockBit CVE Detector
 
-Ontwikkeld door: **Hasecon**
+Ontwikkeld door: **Edward Hasekamp**
 
 ## Beschrijving
 
@@ -46,4 +46,4 @@ Deze module wordt gedistribueerd onder de EUPL-1.2 licentie.
 
 ## Contact
 
-Voor vragen of suggesties, neem contact op met Hasecon via info@hasecon.com.
+Voor vragen of suggesties, neem contact op met Edward Hasekamp via info@hasecon.com.
