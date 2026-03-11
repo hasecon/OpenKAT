@@ -96,7 +96,7 @@ export default function (boefje_meta) {
     const data = JSON.parse(file_contents);
     for (const scan of data) {
       for (const vulnerability of scan["vulnerabilities"] || []) {
-        if (vulnerability["id"].startsWith("6")) {
+        if (String(vulnerability["id"]).startsWith("6")) {
           raws.push([["openkat/finding"], "KAT-OUTDATED-SOFTWARE"]);
         }
       }
