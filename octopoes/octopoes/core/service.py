@@ -37,7 +37,7 @@ from octopoes.models.path import (
     Path,
     get_max_scan_level_inheritance,
     get_max_scan_level_issuance,
-    get_paths_to_neighours,
+    get_paths_to_neighbours,
 )
 from octopoes.models.transaction import TransactionRecord
 from octopoes.models.tree import ReferenceTree
@@ -295,7 +295,7 @@ class OctopoesService:
                 temp_next_ooi_set = set()
                 for ooi_type_, current_ooi_set in grouped_per_type.items():
                     # find paths to neighbours higher or equal than current processing level
-                    paths = get_paths_to_neighours(ooi_type_)
+                    paths = get_paths_to_neighbours(ooi_type_)
                     paths = {
                         path
                         for path in paths
@@ -655,8 +655,10 @@ class OctopoesService:
 
         return sum(bit_counter.values())
 
-    def commit(self):
+    def commit(self, sync: bool = False):
         self.ooi_repository.commit()
         self.origin_repository.commit()
         self.origin_parameter_repository.commit()
         self.scan_profile_repository.commit()
+        if sync and self.session:
+            self.session.sync()
