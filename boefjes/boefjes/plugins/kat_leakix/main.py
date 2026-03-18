@@ -16,7 +16,8 @@ def get_host_results(ip: str) -> list[dict]:
     """Use /host/{ip} endpoint for specific IP lookups (no netblock pollution)."""
     results: list[dict] = []
     response = requests.get(f"https://leakix.net/host/{ip}", headers=get_api_headers(), timeout=API_TIMEOUT)
-    if not response or not response.content:
+    response.raise_for_status()
+    if not response.content:
         return results
 
     response_json = response.json()
@@ -49,8 +50,9 @@ def get_search_results(query: str) -> list[dict]:
                 headers=get_api_headers(),
                 timeout=API_TIMEOUT,
             )
+            response.raise_for_status()
             page_counter += 1
-            if not response or not response.content:
+            if not response.content:
                 break
             response_json = response.json()
             if not response_json:

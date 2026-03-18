@@ -70,6 +70,7 @@ def run(input_ooi: dict, raw: bytes) -> Iterable[NormalizerOutput]:
 
         # reset loop
         event_ooi_reference = pk_ooi_reference
+        ip_port_ooi_reference = pk_ooi_reference
 
         # Autonomous System
         as_ooi = None
@@ -140,7 +141,7 @@ def handle_ip(event, network_reference, as_ooi_reference):
 
 def handle_hostname(event, network_reference):
     try:
-        ipvx = ipaddress.ip_address(event["ip"])
+        ipvx = ipaddress.ip_address(event["host"])
         if ipvx.version == 4:
             return IPAddressV4(address=event["host"], network=network_reference)
         return IPAddressV6(address=event["host"], network=network_reference)
