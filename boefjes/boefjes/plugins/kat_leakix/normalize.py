@@ -53,13 +53,17 @@ def run(input_ooi: dict, raw: bytes) -> Iterable[NormalizerOutput]:
     pk_ooi_reference = Reference.from_str(input_ooi["primary_key"])
     network_reference = Network(name="internet").reference
 
-    # Extract input value for filtering
-    input_value = input_pk.split("|")[-1] if input_pk else None
-    is_hostname_input = input_pk and input_pk.startswith("Hostname|")
+    # Precompute strict-mode filter check outside the loop
+    if search_mode == "strict" and input_pk and input_pk.startswith("Hostname|"):
+        input_value = input_pk.split("|")[-1]
+        strict = bool(input_value)
+    else:
+        input_value = None
+        strict = False
 
     for event in results:
         # In strict mode, filter hostname results to exact matches only
-        if search_mode == "strict" and is_hostname_input and input_value:
+        if strict:
             event_host = event.get("host", "")
             if event_host.lower() != input_value.lower():
                 continue
